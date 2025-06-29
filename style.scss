@@ -1,0 +1,127 @@
+@mixin rounded-rect {
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 3px solid #a6ff00;
+}
+
+:root {
+  --color-current: #0ec7ff;
+  --color-unvisited: #a6ff00;
+  --color-visited: #ffc994;
+
+  --max-inline-size: 400px;
+}
+
+body {
+  background: #222;
+  display: grid;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  gap: 1rem;
+  grid-template-columns: min(var(--max-inline-size), 90%);
+  margin: 0;
+  min-block-size: 100vh;
+  padding: 3rem 0;
+  place-content: center;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  @include rounded-rect;
+
+  appearance: none;
+  background: transparent;
+  border: 1px solid #bfbfbf;
+  box-shadow: 0.3em 0.3em rgb(255 255 255 / 10%);
+  color: white;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  inline-size: 100%;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.4rem;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #bfbfbf;
+      color: black;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#actions {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  > * {
+    flex: 1;
+  }
+}
+
+#stage {
+  display: grid;
+  grid-template-areas: "main";
+
+  canvas {
+    @include rounded-rect;
+
+    grid-area: main;
+    inline-size: 100%;
+    overflow: hidden;
+  }
+
+  &::after {
+    @include rounded-rect;
+
+    border: 1px solid black;
+    content: "";
+    grid-area: main;
+    pointer-events: none;
+  }
+}
+
+#legend {
+  @include rounded-rect;
+
+  display: flex;
+  // display: none;
+  text-align: center;
+
+  * {
+    display: grid;
+    flex: 1;
+    padding: 1rem 0;
+    place-content: center;
+
+    &:nth-child(1) {
+      background-color: var(--color-current);
+    }
+    &:nth-child(2) {
+      background-color: var(--color-unvisited);
+    }
+    &:nth-child(3) {
+      background-color: var(--color-visited);
+    }
+  }
+}

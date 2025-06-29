@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+  </style>
+</head>
+
+<body>
+  <ul id="actions">
+    <li><button data-action="reset">reset</button></li>
+    <li><button data-action="step">step</button></li>
+    <li><button data-action="visualizer">animate</button></li>
+    <li><button data-action="generate">generate</button></li>
+  </ul>
+
+  <div id="stage"></div>
+
+  <ul id="legend">
+    <li>current</li>
+    <li>neighbors</li>
+    <li>visited</li>
+  </ul>
+
+  <script type="module" src="script.babel"></script>
+</body>
+</html>
